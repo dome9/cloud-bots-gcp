@@ -10,6 +10,7 @@ def main(req):
     except Exception as e:
         print('Bad request.')
         return f'GCP cloud bot had an error'
+
     start_time = time.time()
     print(f'{__file__} - source message : {source_message}')
     output_message = {}
@@ -35,5 +36,6 @@ def main(req):
             send_logs(output_message, start_time, source_message.get('account').get('vendor'))
     if output_message:
         return f'{output_message}'
+
     else:
         return f'GCP cloud bot had an error - {output_message}'

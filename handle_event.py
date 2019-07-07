@@ -1,6 +1,6 @@
 import re
 import importlib
-
+MININAL_TAG_LENGTH = 2
 
 def get_data_from_message(message):
     data = {}
@@ -16,7 +16,6 @@ def get_data_from_message(message):
         data['entity_id'] = entity.get('id')
         data['entity_name'] = entity.get('name')
         data['region'] = entity.get('region')
-        data['region'] = data['region'].replace('_', '-')
     return data
 
 
@@ -28,10 +27,12 @@ def handle_event(message, message_output):
     if message_data.get('status') == 'Passed':
         print(f'{__file__} - rule passed, no remediation needed')
         return False
+
     auto_pattern = re.compile('AUTO:')
     compliance_tags = message_data.get('compliance_tags')
     if not compliance_tags or not filter(auto_pattern.search, compliance_tags):  # Rule Doesnt have any 'AUTO:' tags'
         return False
+
     message_output['Rules violations found'] = []
     for tag in compliance_tags:
         print(f'{__file__} - process tag : {tag}')
@@ -47,7 +48,8 @@ def handle_event(message, message_output):
             # Pull out only the bot verb to run as a function
             # The format is AUTO: bot_name param1 param2
             tag_pattern = tuple(tag.split(' '))
-            if len(tag_pattern) < 2:
+            # Tag pattern should contain at least AUTO: and bot name
+            if len(tag_pattern) < MININAL_TAG_LENGTH:
                 bot_data['Empty Auto'] = 'tag. No bot was specified'
                 continue
 
@@ -60,10 +62,10 @@ def handle_event(message, message_output):
 
             try:  ## Run the bot
                 bot_msg = bot_module.run_action(project_id, message['rule'], message['entity'], params)
-                bot_data['Execution status'] = "passed"
+                bot_data['Execution status'] = 'passed'
             except Exception as e:
                 bot_msg = f'Error while executing function {bot}. Error: {e}'
-                bot_data['Execution status'] = "failed"
+                bot_data['Execution status'] = 'failed'
             bot_data['Bot message'] = bot_msg
             message_output['Rules violations found'].append(bot_data.copy())
     return True

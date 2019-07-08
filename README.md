@@ -12,15 +12,20 @@
   - [Flow Diagram](#flow-diagram)
       - [The Bots](#the-bots)
   - [Onboarding](#onboarding)
-      - [Setup your Azure account for
-        CloudBots](#setup-your-azure-account-for-cloudbots)
+      - [Clone repo](#clone-repo)
+      - [Create GCP Service Account for
+        cloudbots](#create-gcp-service-account-for-cloudbots)
+      - [Configure SendGrid](#configure-sendgrid)
+      - [Create a GCP Function with the
+        CloudBots](#create-a-gcp-function-with-the-cloudbots)
+      - [Webhook for Function](#webhook-for-function)
       - [Multiple Accounts](#multiple-accounts)
-  - [Setup your Dome9 account](#setup-your-dome9-account)
-      - [Configure the rules](#configure-the-rules)
+  - [Configure Dome9](#configure-dome9)
+      - [Configure a Ruleset](#configure-a-ruleset)
       - [Configure the Continuous Compliance
         policy](#configure-the-continuous-compliance-policy)
   - [Log Collection for
-    Troubleshooting](#log-collection-for-troubleshooting)
+    Troubleshooting](#log-collection-for-troubleshooting)  
 	
 ## What are Dome9 CloudBots?
 

@@ -1,0 +1,21 @@
+{
+  "personalizations": [
+    {
+      "to": [
+        {
+          "email": ""
+        }
+      ],
+      "subject": "GCP Remediation Output"
+    }
+  ],
+  "from": {
+    "email": "GCP@cloudBots.com"
+  },
+  "content": [
+    {
+      "type": "text/plain",
+      "value": ""
+    }
+  ]
+}

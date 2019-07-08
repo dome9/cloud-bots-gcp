@@ -32,7 +32,7 @@ and Azure accounts. Details are included how to configure and trigger them.
 
 # Flow Diagram
 
-![Flow Diagram](docs/pictures/Azure-CloudBots-Flow-Diagram.png)
+![Flow Diagram](docs/pictures/GCP-CloudBots-Flow-Diagram.png)
 
 ## The Bots
 
@@ -52,7 +52,7 @@ does, and an example of a rule that could be used to trigger it.
 1. In the GCP console, navigate to IAM & admin, and then select  Service accounts.
 1. Click CREATE SERVICE ACCOUNT to add a service account.
 ![](docs/pictures/Create-Service-Account.png)
-1. Enter a name (e.g., *Dome9-cloudbots*)
+3. Enter a name (e.g., *Dome9-cloudbots*)
 1. In the Service Account ID field, enter the name of the service account (in the previous step).
 
 ## Configure SendGrid
@@ -71,14 +71,14 @@ does, and an example of a rule that could be used to trigger it.
 1. Click *CREATE FUNCTION*.
 
 ![](docs/pictures/Create-Function.png)
-1. Enter a name for the function (e.g., *Dome9-Cloudbot*).
+3. Enter a name for the function (e.g., *Dome9-Cloudbot*).
 1. In the Source Code section, select *ZIP upload*.
 1. In the ZIP file section, browse to the location of zip file created above.
 1. In the Stage bucket section, click *Browse*.
 1. Click *+*, enter a name for the bucket, and then click *CREATE*.
 
 ![](docs/pictures/Stage-bucket-new.png)
-1. In the *Function to execute* section, enter *main*.
+8. In the *Function to execute* section, enter *main*.
 1. Click More at the bottom of the navigation menu, on the left.
 1. In the Service account field, select the account created above.
 1. In the Environment variables section, click Add variable, and add the following variables:
@@ -105,7 +105,7 @@ You can use CloudBots for several GCP projects, but install it in only one proje
    1. Click ADD.
    
    ![](docs/pictures/IAM-Add-members.png)
-   1. In the New members field, enter the service account created above.
+   2. In the New members field, enter the service account created above.
    1. Select the Project Editor role.
    1. Click SAVE.
 

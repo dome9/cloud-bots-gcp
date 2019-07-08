@@ -69,14 +69,12 @@ does, and an example of a rule that could be used to trigger it.
 
 1. Navigate to *Cloud Functions*.
 1. Click *CREATE FUNCTION*.
-
 ![](docs/pictures/Create-Function.png)
 3. Enter a name for the function (e.g., *Dome9-Cloudbot*).
 1. In the Source Code section, select *ZIP upload*.
 1. In the ZIP file section, browse to the location of zip file created above.
 1. In the Stage bucket section, click *Browse*.
 1. Click *+*, enter a name for the bucket, and then click *CREATE*.
-
 ![](docs/pictures/Stage-bucket-new.png)
 8. In the *Function to execute* section, enter *main*.
 1. Click More at the bottom of the navigation menu, on the left.
@@ -102,8 +100,7 @@ You can use CloudBots for several GCP projects, but install it in only one proje
 
 1. Create a GCP Function in one of the GCP projects, following the steps above.
 1. For each of the other projects, navigate to IAM & admin, and select IAM.
-   1. Click ADD.
-   
+   1. Click ADD.   
    ![](docs/pictures/IAM-Add-members.png)
    2. In the New members field, enter the service account created above.
    1. Select the Project Editor role.

@@ -74,14 +74,17 @@ does, and an example of a rule that could be used to trigger it.
 
 1. Navigate to *Cloud Functions*.
 1. Click *CREATE FUNCTION*.
+
 ![](docs/pictures/Create-Function.png)
 3. Enter a name for the function (e.g., *Dome9-Cloudbot*).
 1. In the Source Code section, select *ZIP upload*.
 1. In the ZIP file section, browse to the location of zip file created above.
 1. In the Stage bucket section, click *Browse*.
 1. Click *+*, enter a name for the bucket, and then click *CREATE*.
+
 ![](docs/pictures/Stage-bucket-new.png)
-8. In the *Function to execute* section, enter *main*.
+8. In the Runtime section, select *Python*.
+1. In the *Function to execute* section, enter *main*.
 1. Click More at the bottom of the navigation menu, on the left.
 1. In the Service account field, select the account created above.
 1. In the Environment variables section, click Add variable, and add the following variables:
@@ -130,13 +133,13 @@ rulesets to use bots as a remediation step.
     `AUTO: <bot-name> <params>` where *bot-name* is the name of the bot,
     and *params* is a list of arguments for the bot (if any).
     
-    For example, `AUTO: vm_instance_stop` will run the bot to stop an
-    EC2 instance.
+    For example, `AUTO: vm_instance_stop` will run the bot to stop a
+    VM instance.
 
 ## Configure the Continuous Compliance policy
 
 Once the rules in the ruleset have been tagged for remediation, set up a
-Continuous Compliance policy to run the ruleset, and send findings the Azure function webhook.
+Continuous Compliance policy to run the ruleset, and send findings the GCP function webhook.
 
 1.  Navigate to the **Policies** page in the Compliance & Governance
     menu.
@@ -158,7 +161,7 @@ send events for previous findings, follow these steps:
 
 # Log Collection for Troubleshooting
 
-The cloudbots send log information to Dome9, that is used for troubleshooting. By default, this is enabled for all bots. You can disable this in your Azure account. Select the  function, and set the environment variable SEND_LOGS to False. This will apply to all bots in the account. By default, this is set to True, enabling logs.
+The cloudbots send log information to Dome9, that is used for troubleshooting. By default, this is enabled for all bots. You can disable this in your GCP account. Select the  function, and set the environment variable SEND_LOGS to False. This will apply to all bots in the account. By default, this is set to True, enabling logs.
 
 Each account is controlled by the variable for the function configured in that account.
 

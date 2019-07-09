@@ -74,15 +74,15 @@ does, and an example of a rule that could be used to trigger it.
 
 1. Navigate to *Cloud Functions*.
 1. Click *CREATE FUNCTION*.
-
 ![](docs/pictures/Create-Function.png)
+
 3. Enter a name for the function (e.g., *Dome9-Cloudbot*).
 1. In the Source Code section, select *ZIP upload*.
 1. In the ZIP file section, browse to the location of zip file created above.
 1. In the Stage bucket section, click *Browse*.
 1. Click *+*, enter a name for the bucket, and then click *CREATE*.
-
 ![](docs/pictures/Stage-bucket-new.png)
+
 8. In the Runtime section, select *Python*.
 1. In the *Function to execute* section, enter *main*.
 1. Click More at the bottom of the navigation menu, on the left.

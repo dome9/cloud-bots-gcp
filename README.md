@@ -83,7 +83,7 @@ does, and an example of a rule that could be used to trigger it.
 ![](docs/pictures/Stage-bucket-new.png)
 8. In the Runtime section, select *Python*.
 1. In the *Function to execute* section, enter *main*.
-1. Click More at the bottom of the navigation menu, on the left.
+1. Click *More* at the bottom of the navigation menu, on the left.
 1. In the Service account field, select the account created above.
 1. In the Environment variables section, click Add variable, and add the following variables:
    1. SEND_GRID_API_CLIENT - enter to SendGrid API Key, created above.

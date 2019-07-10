@@ -29,7 +29,7 @@
 	
 ## What are Dome9 CloudBots?
 
-Cloud-Bots is an auto remediation solution for GCP, built on top of the
+Dome9 CloudBots are an autoremediation solution for GCP, built on top of the
 CloudGuard Dome9 Continuous Compliance capabilities.
 
 They can also be used standalone, without Dome9, to remedy issues in AWS

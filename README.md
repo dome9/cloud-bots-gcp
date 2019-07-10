@@ -5,7 +5,7 @@
 </p>
 
 <div align="center">
-    <h1><a target="_blank" href="https://cloudbots.dome9.com">CloudBots</a> is an automatic remediation solution for public cloud platforms (<a href="https://github.com/Dome9/cloud-bots" target="_blank">AWS</a>, <a href="https://github.com/Dome9/cloud-bots-azure" target="_blank">Azure</a>, and GCP)</h1>
+    <h1><a target="_blank" href="https://cloudbots.dome9.com">CloudBots</a> is an automatic remediation solution for public cloud platforms (GCP,<a href="https://github.com/Dome9/cloud-bots" target="_blank">AWS</a>, and <a href="https://github.com/Dome9/cloud-bots-azure" target="_blank">Azure</a>)</h1>
 </div>
 
 - [What are Dome9 CloudBots?](#what-are-dome9-cloudbots)
@@ -62,6 +62,8 @@ does, and an example of a rule that could be used to trigger it.
 
 ## Configure SendGrid
 
+SendGrid ([sendgrid.com](sendgrid.com)) is a third-party email service. It has different tiers and pricing. It is used by GCP to distribute emails. See [here](https://cloud.google.com/compute/docs/tutorials/sending-mail/using-sendgrid) for more info.
+
 1. Navigate to sendgrid.com
 1. Create a new account, following the instructions on the site.
 1. Navigate to *Settings*, and then select *API Keys*.
@@ -115,9 +117,19 @@ You can use CloudBots for several GCP projects, but install it in only one proje
 
 # Configure Dome9 
 
-On Dome9 you must add remediation tags to rules in a compliance ruleset.
+On Dome9 add remediation tags to rules in a Compliance ruleset.
 
-## Configure a Ruleset
+See also
+
+[CloudGuard Dome9 Compliance](https://sc1.checkpoint.com/documents/CloudGuard_Dome9/Documentation/Compliance-and-Governance/Compliance-and-Governance.html) 
+
+[Continuous Compliance](https://sc1.checkpoint.com/documents/CloudGuard_Dome9/Documentation/Compliance-and-Governance/ContinuousCompliance.html)
+
+[Notification Policies](https://sc1.checkpoint.com/documents/CloudGuard_Dome9/Documentation/Alerts-Notifications/NotPolicy.html)
+
+## Configure a Dome9 Compliance Ruleset
+
+CloudBots are triggered by findings discovered by Dome9 Compliance rulesets. You must configure a ruleset to trigger the CloudBots.
 
 Follow these steps in your Dome9 account to tag the compliance rules &
 rulesets to use bots as a remediation step.
@@ -134,7 +146,7 @@ rulesets to use bots as a remediation step.
     For example, `AUTO: vm_instance_stop` will run the bot to stop a
     VM instance.
 
-## Configure the Continuous Compliance policy
+## Configure a Dome9 Continuous Compliance policy
 
 Once the rules in the ruleset have been tagged for remediation, set up a
 Continuous Compliance policy to run the ruleset, and send findings the GCP function webhook.

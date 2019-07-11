@@ -46,10 +46,10 @@ does, and an example of a rule that could be used to trigger it.
 
 # Onboarding
 
-## Clone repo
+## Download ZIP
 
-1. Clone this repo.
-1. Zip the contents of the repo, excluding the outer folder (cloud-bots-gcp).
+1. Download ZIP (The GCP Function will require the content zipped).
+1. If you cloned the repository make sure to Zip the contents.
 
 
 ## Create GCP Service Account for cloudbots
@@ -58,7 +58,8 @@ does, and an example of a rule that could be used to trigger it.
 1. Click CREATE SERVICE ACCOUNT to add a service account.
 ![](docs/pictures/Create-Service-Account.png)
 3. Enter a name (e.g., *Dome9-cloudbots*)
-1. In the Service Account ID field, enter the name of the service account (in the previous step).
+1. In the Service Account ID field, the name of the service account will be used for the Cloud Function (in the previous step).
+1. Click *Create*.
 
 ## Configure SendGrid
 
@@ -76,31 +77,29 @@ SendGrid ([sendgrid.com](sendgrid.com)) is a third-party email service. It has d
 
 1. Navigate to *Cloud Functions*.
 1. Click *CREATE FUNCTION*.
-![](docs/pictures/Create-Function.png)
-3. Enter a name for the function (e.g., *Dome9-Cloudbot*).
+1. Enter a name for the function (e.g., *Dome9-Cloudbot*).
+1. Make sure the Trigger is *HTTP*.
 1. In the Source Code section, select *ZIP upload*.
-1. In the ZIP file section, browse to the location of zip file created above.
+1. In the Runtime section, select *Python 3.7*.
+1. In the ZIP file section, browse to the location of zip file created before.
 1. In the Stage bucket section, click *Browse*.
 1. Click *+*, enter a name for the bucket, and then click *CREATE*.
 ![](docs/pictures/Stage-bucket-new.png)
-8. In the Runtime section, select *Python*.
 1. In the *Function to execute* section, enter *main*.
-1. Click *More* at the bottom of the navigation menu, on the left.
+1. Click *Environment variables, networking, timeouts and more* at the bottom of the navigation menu, on the left.
 1. In the Service account field, select the account created above.
 1. In the Environment variables section, click Add variable, and add the following variables:
    1. SEND_GRID_API_CLIENT - enter to SendGrid API Key, created above.
    1. OUPTPUT_EMAIL - the email recipient (for notification emails, generated with SendGrid).
    1. SEND_LOGS  - set to True to send log information to Dome9, for troubleshooting; False to disable this (default is True).
 1. Click *CREATE* to create the function for the cloudbots.
+![](docs/pictures/Create-Function.png)
 
 ## Webhook for Function
 
 The cloudbot function in GCP is triggered from Dome9 using a webhook. For this, the URL of the function is required.
 
-1. Navigate to *Cloud Functions*.
-1. Select the function created above.
-1. Select the *Trigger* tab. The trigger type should be HTTP.
-1. Copy the URL.
+1. Copy the URL for Dome9 Notification.
 
 ## Multiple Accounts
 

@@ -99,6 +99,7 @@ SendGrid ([sendgrid.com](sendgrid.com)) is a third-party email service. It has d
 
 The cloudbot function in GCP is triggered from Dome9 using a webhook. For this, the URL of the function is required.
 
+1. Click on the Cloud Function you created.
 1. Copy the URL for Dome9 Notification.
 
 ## Multiple Accounts

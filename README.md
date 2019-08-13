@@ -157,7 +157,7 @@ Continuous Compliance policy to run the ruleset, and send findings the GCP funct
 3.  Select the account from the list, then click **NEXT**, this will be the one account in which the bots are deployed.
 4.  Select the ruleset from the list, then click **NEXT**.
 5.  Click **ADD NOTIFICATION**.
-6.  Select *Webhook integration* and enter the URL for the Function, as described above  [Webhook for Function](#webhook-for-function), and then click **SAVE**.
+6.  Select *Send to HTTP Endpoint* and enter the URL for the Function, as described above  [Webhook for Function](#webhook-for-function), and then click **SAVE**.
 
 **Note:** Dome9 will send event messages to the webhook for new findings. To
 send events for previous findings, follow these steps:

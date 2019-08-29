@@ -22,4 +22,4 @@ def run_action(project_id: str, rule: str, entity: Dict, params: List) -> str:
             response = gke_client.update_node_pool(project_id, zone, name, node_pool_id, node_pool['version'], COS_IMAGE_TYPE)
             print(f'{__file__} - response -{response}')
 
-    return response
+    return 'All node pools image type changed to COS successfully'

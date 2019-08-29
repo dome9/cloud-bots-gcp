@@ -1,8 +1,6 @@
 from google.cloud import container_v1
 from oauth2client.client import GoogleCredentials
 
-import os
-
 COS_IMAGE_TYPE = 'COS'
 
 

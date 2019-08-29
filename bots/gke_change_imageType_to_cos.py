@@ -3,8 +3,6 @@ from oauth2client.client import GoogleCredentials
 
 import os
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/ravid/Raviddeebcccba08f.json"
-
 COS_IMAGE_TYPE = 'COS'
 
 

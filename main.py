@@ -29,7 +29,7 @@ def main(req):
             if os.getenv('OUTPUT_EMAIL'):
                 sendEvent(output_message)
         else:
-            print(f'''{__file__} - Output didn't sent : {output_message}''')
+            print(f'''{__file__} - Output was not sent : {output_message}''')
         is_send_logs = os.getenv('SEND_LOGS', False)
         print(f'{__file__} - SEND_LOGS set to {str(is_send_logs)}')
         if is_send_logs:

@@ -31,3 +31,11 @@ Sample GSL:   VirtualMachine should have tags contain [ ( key like ‘Prod' ) ]
 Limitations: None
 
 
+
+## gke_change_imageType_to_cos
+
+What it does: Change Google Kubernetes image type to COS
+
+Usage: AUTO: gke_change_imageType_to_cos
+
+Limitations: None

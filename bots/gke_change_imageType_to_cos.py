@@ -1,7 +1,6 @@
 from typing import Dict, List
 
 from google.cloud import container_v1
-from oauth2client.client import GoogleCredentials
 
 COS_IMAGE_TYPE = 'COS'
 
@@ -11,8 +10,7 @@ def run_action(project_id: str, rule: str, entity: Dict, params: List) -> str:
     zone = entity['region']
     name = entity['name']
     print(f'{__file__} - project_id : {project_id} - zone : {zone} kubernetes name : {name}')
-    credentials = GoogleCredentials.get_application_default()
-    gke_client = container_v1.ClusterManagerClient(credentials=credentials)
+    gke_client = container_v1.ClusterManagerClient()
     node_pools = entity.get('nodePools', [])
 
     for node_pool in node_pools:

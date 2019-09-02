@@ -5,7 +5,7 @@ from oauth2client.client import GoogleCredentials
 
 COS_IMAGE_TYPE = 'COS'
 update_node_pool_request_body = {
-    "imageType": "COS"
+    "imageType": COS_IMAGE_TYPE
 }
 
 
@@ -21,10 +21,10 @@ def run_action(project_id: str, rule: str, entity: Dict, params: List) -> str:
     for node_pool in node_pools:
         if node_pool.get('config', {}).get('imageType') != COS_IMAGE_TYPE:
             node_pool_id = node_pool['name']
-            name = f'projects/{project_id}/locations/{zone}/clusters/{name}/nodePools/{node_pool_id}'
+            gke_name = f'projects/{project_id}/locations/{zone}/clusters/{name}/nodePools/{node_pool_id}'
             print(f'{__file__} - node pool name to change: - {node_pool_id}')
 
-            request = service.projects().locations().clusters().nodePools().update(name=name,
+            request = service.projects().locations().clusters().nodePools().update(name=gke_name,
                                                                                    body=update_node_pool_request_body)
             response = request.execute()
 

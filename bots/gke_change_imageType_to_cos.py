@@ -1,8 +1,12 @@
 from typing import Dict, List
 
 from googleapiclient import discovery
-COS_IMAGE_TYPE = 'COS'
 from oauth2client.client import GoogleCredentials
+
+COS_IMAGE_TYPE = 'COS'
+update_node_pool_request_body = {
+    "imageType": "COS"
+}
 
 
 def run_action(project_id: str, rule: str, entity: Dict, params: List) -> str:
@@ -18,15 +22,12 @@ def run_action(project_id: str, rule: str, entity: Dict, params: List) -> str:
         if node_pool.get('config', {}).get('imageType') != COS_IMAGE_TYPE:
             node_pool_id = node_pool['name']
             name = f'projects/{project_id}/locations/{zone}/clusters/{name}/nodePools/{node_pool_id}'
-            update_node_pool_request_body = {
-                "imageType": "COS"
-            }
             print(f'{__file__} - node pool name to change: - {node_pool_id}')
-            request = service.projects().locations().clusters().nodePools().update(name=name, body=update_node_pool_request_body)
+
+            request = service.projects().locations().clusters().nodePools().update(name=name,
+                                                                                   body=update_node_pool_request_body)
             response = request.execute()
 
             print(f'{__file__} - response -{response}')
 
     return 'All node pools image type changed to COS successfully'
-
-

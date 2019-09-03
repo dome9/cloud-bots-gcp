@@ -21,7 +21,7 @@ def run_action(project_id: str, rule: str, entity: Dict, params: List) -> str:
     for node_pool in node_pools:
         if node_pool.get('config', {}).get('imageType') != COS_IMAGE_TYPE:
             node_pool_id = node_pool['name']
-            gke_name = f'projects/{project_id}/locations/{zone}/clusters/{name}/nodePools/{node_pool_id}'
+            gke_name = '/'.join(['projects', project_id, 'locations', zone, 'clusters', name, 'nodePools', node_pool_id])
             print(f'{__file__} - node pool name to change: - {node_pool_id}')
 
             request = service.projects().locations().clusters().nodePools().update(name=gke_name,

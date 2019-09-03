@@ -38,4 +38,6 @@ What it does: Change Google Kubernetes image type to COS
 
 Usage: AUTO: gke_change_imageType_to_cos
 
-Limitations: None
+Sample GSL:    GkeCluster should have nodePools contain-all [config.imageType='COS']
+
+Limitations: The cluster should be updated

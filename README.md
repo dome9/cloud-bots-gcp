@@ -30,20 +30,6 @@
             policy](#configure-a-dome9-continuous-compliance-policy)
   - [Log Collection for
     Troubleshooting](#log-collection-for-troubleshooting)
-
-<p align="center">
-
-<a href="https://cloudbots.dome9.com">
-<img width="150" src="docs/pictures/cloudbotslogo.svg"> </a>
-
-</p>
-
-<div data-align="center">
-
-    <h1><a target="_blank" href="https://cloudbots.dome9.com">CloudBots</a> is an automatic remediation solution for public cloud platforms (GCP, <a href="https://github.com/Dome9/cloud-bots" target="_blank">AWS</a>, and <a href="https://github.com/Dome9/cloud-bots-azure" target="_blank">Azure</a>)</h1>
-
-</div>
-
   - [What are Dome9 CloudBots?](#what-are-dome9-cloudbots)
       - [Flow Diagram](#flow-diagram)
           - [The Bots](#the-bots)

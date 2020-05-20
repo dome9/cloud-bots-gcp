@@ -129,7 +129,7 @@ google-resumable-media==0.3.2
 googleapis-common-protos==1.6.0
 grpc-google-iam-v1==0.12.3
 grpcio==1.23.0
-httplib2==0.13.1
+httplib2==0.18.0
 humanfriendly==4.18
 idna==2.8
 invoke==1.2.0

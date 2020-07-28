@@ -14,7 +14,7 @@ Limitations: None
 
 What it does: tags the VM in the finding 
 
-Usage: AUTO: vm_instance_add_label tag-name tag-value  
+Usage:  vm_instance_add_label tag-name tag-value  
 
 Sample GSL:   VirtualMachine should have tags contain [ ( key like ‘Prod' ) ]
 
@@ -24,7 +24,7 @@ Limitations: None
 
 What it does: stops the  VM in the finding
 
-Usage: AUTO: vm_instance_stop
+Usage:  vm_instance_stop
 
 Sample GSL:   VirtualMachine should have tags contain [ ( key like ‘Prod' ) ]
 
@@ -36,7 +36,7 @@ Limitations: None
 
 What it does: Change Google Kubernetes image type to COS
 
-Usage: AUTO: gke_change_imageType_to_cos
+Usage:  gke_change_imageType_to_cos
 
 Sample GSL:    GkeCluster should have nodePools contain-all [config.imageType='COS']
 

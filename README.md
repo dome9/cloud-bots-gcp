@@ -8,7 +8,7 @@
     <h1><a target="_blank" href="https://cloudbots.dome9.com">CloudBots</a> is an automatic remediation solution for public cloud platforms (GCP, <a href="https://github.com/Dome9/cloud-bots" target="_blank">AWS</a>, and <a href="https://github.com/Dome9/cloud-bots-azure" target="_blank">Azure</a>)</h1>
 </div>
 
-  - [What are Dome9 CloudBots?](#what-are-dome9-cloudbots)
+  - [What are CloudGuard CloudBots?](#what-are-dome9-cloudbots)
   - [Flow Diagram](#flow-diagram)
       - [The Bots](#the-bots)
   - [Deploy the CloudBots](#deploy-the-cloudbots)
@@ -23,14 +23,14 @@
             CloudBots](#create-a-gcp-function-with-the-cloudbots)
           - [Webhook for Function](#webhook-for-function)
       - [Multiple GCP Accounts](#multiple-gcp-accounts)
-      - [Configure your Dome9 account](#configure-your-dome9-account)
-          - [Configure a Dome9 Compliance
+      - [Configure your CloudGuard account](#configure-your-dome9-account)
+          - [Configure a CloudGuard Compliance
             Ruleset](#configure-a-dome9-compliance-ruleset)
-          - [Configure a Dome9 Continuous Compliance
+          - [Configure a CloudGuard Continuous Compliance
             policy](#configure-a-dome9-continuous-compliance-policy)
   - [Log Collection for
     Troubleshooting](#log-collection-for-troubleshooting)
-  - [What are Dome9 CloudBots?](#what-are-dome9-cloudbots)
+  - [What are CloudGuard CloudBots?](#what-are-dome9-cloudbots)
       - [Flow Diagram](#flow-diagram)
           - [The Bots](#the-bots)
       - [Onboarding](#onboarding)
@@ -49,10 +49,10 @@
       - [Log Collection for
         Troubleshooting](#log-collection-for-troubleshooting)
 
-## What are Dome9 CloudBots?
+## What are CloudGuard CloudBots?
 
-Dome9 CloudBots are an autoremediation solution for GCP, built on top of
-the CloudGuard Dome9 Continuous Compliance capabilities.
+CloudGuard CloudBots are an autoremediation solution for GCP, built on top of
+the CloudGuard CloudGuard Continuous Compliance capabilities.
 
 They can also be used standalone, without Dome9, to remedy issues in AWS
 and Azure accounts. Details are included how to configure and trigger
@@ -71,7 +71,7 @@ trigger it.
 # Deploy the CloudBots
 
 To use the CloudBots, you have to set up your GCP project, and your
-Dome9 account.
+CloudGuard account.
 
 ## Configure your GCP Projects for CloudBots
 
@@ -148,11 +148,11 @@ This step is optional.
 
 ### Webhook for Function
 
-The cloudbot function in GCP is triggered from Dome9 using a webhook.
+The cloudbot function in GCP is triggered from CloudGuard using a webhook.
 For this, the URL of the function is required.
 
 1.  Click on the Cloud Function you created.
-2.  Copy the URL for Dome9 Notification.
+2.  Copy the URL for CloudGuard Notification.
 
 ## Multiple GCP Accounts
 
@@ -171,9 +171,9 @@ granting IAM permissions.
     3.  Select the Project Editor role.
     4.  Click SAVE.
 
-## Configure your Dome9 account
+## Configure your CloudGuard account
 
-On Dome9 add remediation tags to rules in a Compliance ruleset.
+On CloudGuard add remediation tags to rules in a Compliance ruleset.
 
 See also
 
@@ -186,15 +186,15 @@ Compliance](https://sc1.checkpoint.com/documents/CloudGuard_Dome9/Documentation/
 [Notification
 Policies](https://sc1.checkpoint.com/documents/CloudGuard_Dome9/Documentation/Alerts-Notifications/NotPolicy.html)
 
-### Configure a Dome9 Compliance Ruleset
+### Configure a CloudGuard Compliance Ruleset
 
-CloudBots are triggered by findings discovered by Dome9 Compliance
+CloudBots are triggered by findings discovered by CloudGuard Compliance
 rulesets. You must configure a ruleset to trigger the CloudBots.
 
-Follow these steps in your Dome9 account to tag the compliance rules &
+Follow these steps in your CloudGuard account to tag the compliance rules &
 rulesets to use bots as a remediation step.
 
-1.  In the Dome9 web app, navigate to the Rulesets page in the
+1.  In the CloudGuard web app, navigate to the Rulesets page in the
     Compliance & Governance menu.
 
 2.  Select or create a ruleset that will be used for the cloudbots.
@@ -208,7 +208,7 @@ rulesets to use bots as a remediation step.
     For example, `AUTO: vm_instance_stop` will run the bot to stop a VM
     instance.
 
-### Configure a Dome9 Continuous Compliance policy
+### Configure a CloudGuard Continuous Compliance policy
 
 Once the rules in the ruleset have been tagged for remediation, set up a
 Continuous Compliance policy to run the ruleset, and send findings the
@@ -223,19 +223,19 @@ GCP function webhook.
 5.  Click **ADD NOTIFICATION**.
 6.  Select *Send to HTTP Endpoint* and enter the URL for the Function, as described above  [Webhook for Function](#webhook-for-function), and then click **SAVE**.
 
-**Note:** Dome9 will send event messages to the webhook for new
+**Note:** CloudGuard will send event messages to the webhook for new
 findings. To send events for previous findings, follow these steps:
 
 1.  Navigate to the **Policies** page.
 2.  Find the ruleset and account in the list, and hover over the right
     of the row, then click on the *Send All Alerts* icon.
 3.  Select the *webhook* Notification Type option, and the Notification
-    Policy (the one created above), then click **SEND**. Dome9 will send
+    Policy (the one created above), then click **SEND**. CloudGuard will send
     event messages to the GCP function webhook.
 
 # Log Collection for Troubleshooting
 
-The cloudbots send log information to Dome9, that is used for
+The cloudbots send log information to CloudGuard, that is used for
 troubleshooting. By default, this is enabled for all bots. You can
 disable this in your GCP account. Select the function, and set the
 environment variable SEND\_LOGS to False. This will apply to all bots in

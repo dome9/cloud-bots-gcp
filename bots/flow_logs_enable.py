@@ -15,12 +15,14 @@ def run_action(project_id, rule, entity, params):
     print("hola")
     # Without fingerprint
     
-    subnetwork_body = {
+    subnetwork_body = '''
+    {
         "logConfig": {
         "enable": true
         }
     }
-    
+    '''
+
     print("La variable funciona")
 
     print(subnetwork_body)

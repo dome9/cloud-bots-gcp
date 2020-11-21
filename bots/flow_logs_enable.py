@@ -1,3 +1,4 @@
+import json
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 
@@ -7,19 +8,20 @@ def run_action(project_id, rule, entity, params):
     service = discovery.build('compute', 'v1', credentials=credentials)
     
     region = entity.get('region')
-    fingerprint = entity.get('fingerprint')
+    fingerprint = entity.get('fingerPrint')
     subnetwork = entity.get('name')
 
     print(f'{__file__} - project_id : {project_id} - region : {region} - subnetwork : {subnetwork} - fingerprint : {fingerprint}')
-
-    # TODO: Add desired entries to the request body. Only assigned entries
-    # will be changed.
+    print("hola")
+    # Without fingerprint
+    
     subnetwork_body = {
-    "logConfig": {
-    "enable": true
-    },
-    "fingerprint": "{fingerprint}"
+        "logConfig": {
+        "enable": true
+        }
     }
+    
+    print("La variable funciona")
 
     print(subnetwork_body)
 

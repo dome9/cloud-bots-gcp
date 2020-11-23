@@ -1,4 +1,5 @@
 import json
+import googleapiclient.errors
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 
@@ -16,13 +17,16 @@ def run_action(project_id, rule, entity, params):
     # Without fingerprint
     # subnetwork_body = '''{ "logConfig": { "enable": true } '''
 
-    subnetwork_body = '{"enableFlowLogs": true, "fingerprint": "'+ fingerprint +'"}'
+    subnetwork_body = {"enableFlowLogs": "true", "fingerprint": fingerprint}
     
     print("La variable funciona")
 
     print(subnetwork_body)
 
-    request = service.subnetworks().patch(project=project, region=region, subnetwork=subnetwork, body=subnetwork_body)
+    try:
+        request = service.subnetworks().patch(project=project, region=region, subnetwork=subnetwork, body=subnetwork_body)
+    except Error, InvalidJsonError, UnknownFileType as e:
+        print('Error',e)
     print(request)
     response = request.execute()
     print(f'{__file__} - response - {response}')

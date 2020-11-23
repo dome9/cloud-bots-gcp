@@ -41,3 +41,13 @@ Usage:  gke_change_imageType_to_cos
 Sample GSL:    GkeCluster should have nodePools contain-all [config.imageType='COS']
 
 Limitations: The cluster should be updated
+
+## flow_logs_enable
+
+What it does: Enable flow logs in the subnetwork
+
+Usage:  flow_logs_enable
+
+Sample GSL:   Subnet should have enableFlowLogs=true
+
+Limitations: None

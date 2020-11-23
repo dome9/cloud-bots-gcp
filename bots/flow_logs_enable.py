@@ -10,18 +10,13 @@ def run_action(project_id, rule, entity, params):
     subnetwork = entity.get('name')
 
     print(f'{__file__} - project_id : {project_id} - region : {region} - subnetwork : {subnetwork} - fingerprint : {fingerprint}')
-    print("hola")
-    
 
     subnetwork_body = {
         "enableFlowLogs": "true",
         "fingerprint": fingerprint
         }
-    print("La variable funciona")
-    print(subnetwork_body)
+   
     request = service.subnetworks().patch(project=project_id, region=region, subnetwork=subnetwork, body=subnetwork_body)
-    print(request)
-    print("request vacio")
     response = request.execute()
     print(f'{__file__} - response - {response}')
     return f'{response}'

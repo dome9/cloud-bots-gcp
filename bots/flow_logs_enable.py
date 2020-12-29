@@ -1,3 +1,10 @@
+# What it does: Enables flow logs in a given subnetwork
+# Bot will enable flow logs
+# Usage: AUTO: flow_logs_enable
+# Example: Subnet where <condition> should have enableFlowLogs=true
+# AUTO: flow_logs_enable
+# Limitations: None
+
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 

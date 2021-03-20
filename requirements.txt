@@ -137,7 +137,7 @@ ipaddress==1.0.22
 isodate==0.6.0
 isort==4.3.20
 javaproperties==0.5.1
-Jinja2==2.10.1
+Jinja2==2.11.3
 jmespath==0.9.4
 jsondiff==1.2.0
 knack==0.6.3

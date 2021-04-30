@@ -169,7 +169,7 @@ pytz==2019.1
 PyYAML==5.1.1
 requests==2.22.0
 requests-oauthlib==1.2.0
-rsa==4.0
+rsa==4.7
 s3transfer==0.2.0
 scp==0.13.2
 sendgrid==6.0.5

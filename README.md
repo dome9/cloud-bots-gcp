@@ -111,45 +111,45 @@ This step is optional.
 1. Navigate to *Cloud Functions*.
 2. Click *CREATE FUNCTION*.
    
-   ![](docs/pictures/create function 2.jpg)
+   ![](docs/pictures/create_function_2.jpg)
    
 3. Choose a name for the function.
 4. Select a region for the function.
    
-    ![](docs/pictures/function name and region.jpg)
+    ![](docs/pictures/function_name_and_region.jpg)
 
 5. Set *Trigger Type* as **HTTP**.
 6. Check *Allow unauthenticated invocations* option.
 7. Press *SAVE*.
    
-    ![](docs/pictures/save trigger options.jpg)
+    ![](docs/pictures/save_trigger_options.jpg)
 
 8. Expand *RUNTIME, BUILD, CONNECTIONS AND SECURITY SETTINGS*.
 9. Make sure the *Runtime Service Account* is set to **App Engine default service account**.
    
-    ![](docs/pictures/runtime service account.jpg)
+    ![](docs/pictures/runtime_service_account.jpg)
 
 10. In the *Runtime Environment Variables* section, click on *ADD VARIABLE* and add the following variables:
     1. (optional) SEND_GRID_API_CLIENT - enter the SendGrid API Ket that was created above.
     2. (optional) OUTPUT_EMAIL - the email recipient (for notification emails, generated with SendGrid).
     3. SEND_LOGS - set to *True* to send log information to CloudGuard for troubleshooting; set to *False* to disable this (default is *True*).
     
-    ![](docs/pictures/environment variables.jpg)
+    ![](docs/pictures/environment_variables.jpg)
 
 11. Press *NEXT*.
 12. Set Runtime as *Python 3.7*.
 13. In the *ENTRY POINT* section enter 'main'.
     
-    ![](docs/pictures/runtime and entry point.jpg)
+    ![](docs/pictures/runtime_and_entry_point.jpg)
 
 14. In *SOURCE CODE*, choose **ZIP Upload**.
 15. Choose the zip file that was created above.
     
-    ![](docs/pictures/zip upload.jpg)
+    ![](docs/pictures/zip_upload.jpg)
 
 16. Choose a *Stage Bucket* (or create a new one if necessary).
     
-    ![](docs/pictures/select bucket.jpg)
+    ![](docs/pictures/select_bucket.jpg)
 
 17. Click on *DEPLOY*.
 

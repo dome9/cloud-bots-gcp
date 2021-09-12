@@ -78,7 +78,6 @@ CloudGuard account.
 Follow these steps to configure your GCP Projects:
 
   - download the CloudBots zip file
-  - Create a GCP Service Account
   - Optionally, configure SendGrid to forward notifications by email
   - Create a GCP Function for the CloudBots
 
@@ -87,17 +86,6 @@ Follow these steps to configure your GCP Projects:
 1.  Download the CloudBots zip file from this repository (The GCP
     Function will require the content zipped).
 2.  If you cloned the repository, zip the contents.
-
-### Create GCP Service Account for cloudbots
-
-1.  In the GCP console, navigate to IAM & admin, and then select Service
-    accounts.
-2.  Click CREATE SERVICE ACCOUNT to add a service account.
-    ![](docs/pictures/Create-Service-Account.png)
-3.  Enter a name (e.g., *Dome9-cloudbots*)
-4.  In the Service Account ID field, the name of the service account
-    will be used for the Cloud Function (in the previous step).
-5.  Click *Create*.
 
 ### Configure SendGrid
 
@@ -120,31 +108,50 @@ This step is optional.
 
 ### Create a GCP Function with the CloudBots
 
-1.  Navigate to *Cloud Functions*.
-2.  Click *CREATE FUNCTION*.
-3.  Enter a name for the function (e.g., *Dome9-Cloudbot*).
-4.  Make sure the Trigger is *HTTP*.
-5.  In the Source Code section, select *ZIP upload*.
-6.  In the Runtime section, select *Python 3.7*.
-7.  In the ZIP file section, browse to the location of zip file created
-    before.
-8.  In the Stage bucket section, click *Browse*.
-9.  Click *+*, enter a name for the bucket, and then click *CREATE*.
-    ![](docs/pictures/Stage-bucket-new.png)
-10. In the *Function to execute* section, enter *main*.
-11. Click *Environment variables, networking, timeouts and more* at the
-    bottom of the navigation menu, on the left.
-12. In the Service account field, select the account created above.
-13. In the Environment variables section, click Add variable, and add
-    the following variables:
-    1.  SEND\_GRID\_API\_CLIENT - enter to SendGrid API Key, created
-        above.
-    2.  OUPTPUT\_EMAIL - the email recipient (for notification emails,
-        generated with SendGrid).
-    3.  SEND\_LOGS - set to True to send log information to Dome9, for
-        troubleshooting; False to disable this (default is True).
-14. Click *CREATE* to create the function for the cloudbots.
-    ![](docs/pictures/Create-Function.png)
+1. Navigate to *Cloud Functions*.
+2. Click *CREATE FUNCTION*.
+   
+   ![](docs/pictures/create function 2.jpg)
+   
+3. Choose a name for the function.
+4. Select a region for the function.
+   
+    ![](docs/pictures/function name and region.jpg)
+
+5. Set *Trigger Type* as **HTTP**.
+6. Check *Allow unauthenticated invocations* option.
+7. Press *SAVE*.
+   
+    ![](docs/pictures/save trigger options.jpg)
+
+8. Expand *RUNTIME, BUILD, CONNECTIONS AND SECURITY SETTINGS*.
+9. Make sure the *Runtime Service Account* is set to **App Engine default service account**.
+   
+    ![](docs/pictures/runtime service account.jpg)
+
+10. In the *Runtime Environment Variables* section, click on *ADD VARIABLE* and add the following variables:
+    1. (optional) SEND_GRID_API_CLIENT - enter the SendGrid API Ket that was created above.
+    2. (optional) OUTPUT_EMAIL - the email recipient (for notification emails, generated with SendGrid).
+    3. SEND_LOGS - set to *True* to send log information to CloudGuard for troubleshooting; set to *False* to disable this (default is *True*).
+    
+    ![](docs/pictures/environment variables.jpg)
+
+11. Press *NEXT*.
+12. Set Runtime as *Python 3.7*.
+13. In the *ENTRY POINT* section enter 'main'.
+    
+    ![](docs/pictures/runtime and entry point.jpg)
+
+14. In *SOURCE CODE*, choose **ZIP Upload**.
+15. Choose the zip file that was created above.
+    
+    ![](docs/pictures/zip upload.jpg)
+
+16. Choose a *Stage Bucket* (or create a new one if necessary).
+    
+    ![](docs/pictures/select bucket.jpg)
+
+17. Click on *DEPLOY*.
 
 ### Webhook for Function
 
@@ -152,7 +159,10 @@ The cloudbot function in GCP is triggered from CloudGuard using a webhook.
 For this, the URL of the function is required.
 
 1.  Click on the Cloud Function you created.
-2.  Copy the URL for CloudGuard Notification.
+2.  Go to *TRIGGER* section.
+3. Copy the *Trigger URL*.
+
+![](docs/pictures/trigger.jpg)
 
 ## Multiple GCP Accounts
 

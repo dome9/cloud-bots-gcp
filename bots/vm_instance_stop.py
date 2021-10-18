@@ -1,9 +1,7 @@
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 import logging
-
-ERRORS = 'errors'
-ERROR = 'error'
+import bots_utils
 
 
 def run_action(project_id, rule, entity, params):
@@ -20,8 +18,8 @@ def run_action(project_id, rule, entity, params):
         logging.info(f'{__file__} - stopping virtual machine: {instance}')
         request = service.instances().stop(project=project_id, zone=zone, instance=instance)
         response = request.execute()
-        if ERROR in response:  # on failure
-            msg = f'Failed stopping virtual machine - {instance}: {response[ERROR]}'
+        if bots_utils.UtilsConstants.ERROR in response:  # on failure
+            msg = f'Failed stopping virtual machine - {instance}: {response[bots_utils.UtilsConstants.ERROR]}'
             logging.error(f'{__file__} - {msg}')
             output_msg += msg
         else:  # on success
@@ -32,4 +30,5 @@ def run_action(project_id, rule, entity, params):
         msg = f'Unexpected error occurred - {e}'
         logging.error(f'{__file__} - {msg}')
         output_msg += msg
+
     return output_msg

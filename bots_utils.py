@@ -1,0 +1,2 @@
+class UtilsConstants:
+    ERROR = 'error'

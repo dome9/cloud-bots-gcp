@@ -1,15 +1,34 @@
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
+import logging
+import bots_utils
 
 
 def run_action(project_id, rule, entity, params):
-    print(f'{__file__} - run_action started')
+    logging.info(f'{__file__} - run_action started')
     credentials = GoogleCredentials.get_application_default()
     service = discovery.build('compute', 'v1', credentials=credentials)
     firewall = entity.get('name')
-    print(f'{__file__} - project_id : {project_id} - firewall : {firewall}')
+    logging.info(f'{__file__} - project_id : {project_id} - firewall : {firewall}')
 
-    request = service.firewalls().delete(project=project_id, firewall=firewall)
-    response = request.execute()
-    print(f'{__file__} - response -{response}')
-    return f'{response}'
+    output_msg = ''
+
+    try:
+        logging.info(f'{__file__} - deleting firewall rule: {firewall}')
+        request = service.firewalls().delete(project=project_id, firewall=firewall)
+        response = request.execute()
+        if bots_utils.UtilsConstants.ERROR in response:  # on failure
+            msg = f'Failed deleting firewall rule: {firewall} - {response[bots_utils.UtilsConstants.ERROR]}'
+            logging.error(f'{__file__} - {msg}')
+            output_msg += msg
+        else:  # on success
+            msg = f'firewall rule: {firewall} was successfully deleted'
+            logging.info(f'{__file__} - {msg}')
+            output_msg += msg
+    except Exception as e:
+        msg = f'Unexpected error occurred - {e}'
+        logging.error(f'{__file__} - {msg}')
+        output_msg += msg
+
+    return output_msg
+

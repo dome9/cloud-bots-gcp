@@ -3,6 +3,7 @@
 # Usage: AUTO: flow_logs_enable
 # Example: Subnet where <condition> should have enableFlowLogs=true
 # AUTO: flow_logs_enable
+# Permissions: compute.subnetworks.get, compute.subnetworks.update
 # Limitations: None
 
 from googleapiclient import discovery

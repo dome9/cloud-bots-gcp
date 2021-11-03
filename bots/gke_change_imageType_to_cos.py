@@ -1,5 +1,6 @@
-from typing import Dict, List
+# Permissions: container.clusters.update, gkemulticloud.awsNodePools.update
 
+from typing import Dict, List
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 import logging

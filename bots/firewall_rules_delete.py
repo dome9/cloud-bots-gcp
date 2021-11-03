@@ -1,3 +1,5 @@
+# Permissions: compute.firewalls.delete, compute.networks.updatePolicy
+
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 import logging

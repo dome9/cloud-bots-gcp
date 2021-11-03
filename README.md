@@ -76,10 +76,43 @@ CloudGuard account.
 ## Configure your GCP Projects for CloudBots
 
 Follow these steps to configure your GCP Projects:
-
+    
+  - Create a custom role for the CloudBots *Cloud Function*
+  - Create a *Service Account* for the CloudBots  
   - download the CloudBots zip file
   - Optionally, configure SendGrid to forward notifications by email
   - Create a GCP Function for the CloudBots
+
+### Create a custom role for the CloudBots *Cloud Function*
+
+1. In GCP portal, go to *IAM & Admin* -> *Roles*
+2. Choose *Create Role*
+3. Enter a title for the role (like 'CloudGuard-CloudBots-Role')
+4. Choose *Role launch stage* to be **General Availability**
+
+    ![](docs/pictures/create-role.jpg)
+
+5. Click on *Add permissions**
+6. Add the permissions from the file [CloudGuard-CloudBots-Role.json](CloudGuard-CloudBots-Role.json)
+   
+    ![](docs/pictures/add-permissions.jpg)
+
+7. Press *CREATE*
+
+### Create a *Service Account* for the CloudBots
+
+1. In GCP portal, go to *IAM & Admin* -> *Service Accounts*
+2. Choose *Create Service Account*
+3. Enter a name for the service account (like 'CloudGuard-CloudBots-ServiceAccount')
+
+    ![](docs/pictures/create-service-account.jpg)
+
+4. Press on *Create and Continue*
+5. Choose the role you created in the previous step
+
+    ![](docs/pictures/add-role-to-service-account.jpg)
+
+6. Press *Continue* and the then *Done*
 
 ### Download the CloudBots zip file
 
@@ -125,9 +158,9 @@ This step is optional.
     ![](docs/pictures/save_trigger_options.jpg)
 
 8. Expand *RUNTIME, BUILD, CONNECTIONS AND SECURITY SETTINGS*.
-9. Make sure the *Runtime Service Account* is set to **App Engine default service account**.
+9. Make sure the *Runtime Service Account* is set to the service account you created earlier.
    
-    ![](docs/pictures/runtime_service_account.jpg)
+    ![](docs/pictures/choose-service-account.jpg)
 
 10. In the *Runtime Environment Variables* section, click on *ADD VARIABLE* and add the following variables:
     1. (optional) SEND_GRID_API_CLIENT - enter the SendGrid API Ket that was created above.

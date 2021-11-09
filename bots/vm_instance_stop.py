@@ -1,3 +1,5 @@
+# Permissions: compute.instances.stop
+
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 import logging

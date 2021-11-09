@@ -1,0 +1,13 @@
+{
+  "permissions": [
+    "compute.firewalls.delete",
+    "compute.instances.get",
+    "compute.instances.setLabels",
+    "compute.instances.stop",
+    "compute.networks.updatePolicy",
+    "compute.subnetworks.get",
+    "compute.subnetworks.update",
+    "container.clusters.update",
+    "gkemulticloud.awsNodePools.update"
+  ]
+}

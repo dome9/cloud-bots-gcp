@@ -1,3 +1,5 @@
+# Permissions: compute.instances.get, compute.instances.setLabels
+
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 import logging

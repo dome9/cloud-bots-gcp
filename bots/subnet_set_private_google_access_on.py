@@ -1,7 +1,8 @@
-# What it does: todo complete
-# Usage: todo complete
-# Example: todo complete
-# Limitations: todo complete
+# What it does: Enables subnet 'private google access'
+# Usage: subnet_set_private_google_access_on
+# Example: subnet_set_private_google_access_on
+# Limitations: None
+# Sample GSL: Subnet should have privateIpGoogleAccess=true
 # Permissions: compute.subnetworks.setPrivateIpGoogleAccess
 
 from googleapiclient import discovery

@@ -22,15 +22,15 @@ def run_action(project_id, rule, entity, params):
 
     logging.info(f'{__file__} - Setting private google access on subnet: {subnet_name} to on')
 
-    response = set_google_private_access_on(service, project_id, subnet_name, region)
-    if bots_utils.UtilsConstants.ERROR in response:  # on failure
-        msg = f'Failed to set private google access on: {response[bots_utils.UtilsConstants.ERROR]}'
+    try:
+        set_google_private_access_on(service, project_id, subnet_name, region)
+    except Exception as e:  # on failure
+        msg = f'Failed to set private google access on: {e}'
         logging.error(f'{__file__} - {msg}')
         raise Exception(msg)
-    else:  # on success
-        msg = f'Successfully set private google access on'
-        logging.info(f'{__file__} - {msg}')
-        output_msg += msg
+    msg = f'Successfully set private google access on'
+    logging.info(f'{__file__} - {msg}')
+    output_msg += msg
 
     return output_msg
 
@@ -41,8 +41,7 @@ def set_google_private_access_on(service, project_id, subnet_name, region):
     }
     request = service.subnetworks().setPrivateIpGoogleAccess(project=project_id, region=region, subnetwork=subnet_name,
                                                              body=subnetworks_set_private_ip_google_access_request_body)
-    response = request.execute()
-    return response
+    request.execute()
 
 
 def get_properties_from_entity(entity):

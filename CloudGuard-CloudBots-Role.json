@@ -6,6 +6,7 @@
     "compute.instances.stop",
     "compute.networks.updatePolicy",
     "compute.subnetworks.get",
+    "compute.subnetworks.setPrivateIpGoogleAccess",
     "compute.subnetworks.update",
     "container.clusters.update",
     "gkemulticloud.awsNodePools.update"

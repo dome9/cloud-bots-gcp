@@ -36,6 +36,27 @@ Limitations: The cluster should be updated
 
 Permissions: container.clusters.update, gkemulticloud.awsNodePools.update
 
+## gke_enable_master_authorized_networks
+
+What it does: Enables 'master authorized networks' on a gke cluster
+
+Usage:  gke_enable_master_authorized_networks <cidr_blocks>
+        cidr_blocks is an optional parameter (leave empty if needed)
+        cidr_block has two properties - name and cidr range.
+        Each cidr_block should be passed this way: name-cidr_range
+        User can pass multiple cidr_blocks by separating them with a comma (see example)
+
+Examples: gke_enable_master_authorized_networks 
+         gke_enable_master_authorized_networks net1-10.0.0.0/24,net2-192.168.0.0/16
+
+Limitations: None
+
+Example GSL: GkeCluster should have masterAuthorizedNetworksConfig.enabled=true
+
+Associated Rule: D9.GCP.NET.10
+
+Permissions: container.clusters.update
+
 ## subnet_set_private_google_access_on
 
 What it does: Enables subnet 'private google access'

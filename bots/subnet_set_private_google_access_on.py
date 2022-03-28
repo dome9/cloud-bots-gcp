@@ -3,6 +3,7 @@
 # Example: subnet_set_private_google_access_on
 # Limitations: None
 # Sample GSL: Subnet should have privateIpGoogleAccess=true
+# Associated Rule: D9.GCP.NET.14
 # Permissions: compute.subnetworks.setPrivateIpGoogleAccess
 
 from googleapiclient import discovery

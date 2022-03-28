@@ -48,6 +48,8 @@ Limitations: None
 
 Sample GSL:     Subnet should have privateIpGoogleAccess=true
 
+Associated Rule: D9.GCP.NET.14
+
 Permissions: compute.subnetworks.setPrivateIpGoogleAccess
 
 ## vm_instance_add_label

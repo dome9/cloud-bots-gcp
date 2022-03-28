@@ -21,16 +21,15 @@ def run_action(project_id, rule, entity, params):
     output_msg = ''
 
     logging.info(f'{__file__} - Setting private google access on subnet: {subnet_name} to on')
-    response = set_google_private_access_on(service, project_id, subnet_name, region)
-    if bots_utils.UtilsConstants.ERROR in response:  # on failure
-        msg = f': Failed to set private google access on for subnet \'{subnet_name}\' - ' \
-              f'{response[bots_utils.UtilsConstants.ERROR]}'
+    try:
+        set_google_private_access_on(service, project_id, subnet_name, region)
+    except Exception as e:  # on failure
+        msg = f': Failed to set private google access on for subnet \'{subnet_name}\' - {e}'
         logging.error(f'{__file__} - {msg}')
         raise Exception(msg)
-    else:  # on success
-        msg = f'Successfully set private google access on for subnet \'{subnet_name}\''
-        logging.info(f'{__file__} - {msg}')
-        output_msg += msg
+    msg = f'Successfully set private google access on for subnet \'{subnet_name}\''
+    logging.info(f'{__file__} - {msg}')
+    output_msg += msg
 
     return output_msg
 

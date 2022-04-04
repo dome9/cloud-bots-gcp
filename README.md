@@ -64,7 +64,7 @@ them.
 
 ## The Bots
 
-Refer to [this](dome9CloudBots/bots/bots.md) file for a list of the
+Refer to [this](bots.md) file for a list of the
 bots, what each one does, and an example of a rule that could be used to
 trigger it.
 

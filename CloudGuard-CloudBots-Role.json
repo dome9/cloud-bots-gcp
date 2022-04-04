@@ -4,6 +4,7 @@
     "compute.instances.get",
     "compute.instances.setLabels",
     "compute.instances.stop",
+    "compute.instances.deleteAccessConfig",
     "compute.networks.updatePolicy",
     "compute.subnetworks.get",
     "compute.subnetworks.setPrivateIpGoogleAccess",

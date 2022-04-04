@@ -57,6 +57,22 @@ Associated Rule: D9.GCP.NET.10
 
 Permissions: container.clusters.update
 
+## gke_subnet_set_private_google_access_on
+
+What it does: Set the 'private google access' property of the subnet of a GKE cluster to on
+
+Usage: gke_subnet_set_private_google_access_on
+
+Example: gke_subnet_set_private_google_access_on
+
+Limitations: None
+
+Sample GSL: GkeCluster should have subnetwork.privateIpGoogleAccess
+
+Associated Rule: D9.GCP.NET.19
+
+Permissions: compute.subnetworks.setPrivateIpGoogleAccess
+
 ## subnet_set_private_google_access_on
 
 What it does: Enables subnet 'private google access'

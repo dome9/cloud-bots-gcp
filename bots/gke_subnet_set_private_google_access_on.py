@@ -1,9 +1,9 @@
-# What it does: Enables subnet 'private google access'
-# Usage: subnet_set_private_google_access_on
-# Example: subnet_set_private_google_access_on
+# What it does: Set the 'private google access' property of the subnet of a GKE cluster to on
+# Usage: gke_subnet_set_private_google_access_on
+# Example: gke_subnet_set_private_google_access_on
 # Limitations: None
-# Sample GSL: Subnet should have privateIpGoogleAccess=true
-# Associated Rule: D9.GCP.NET.14
+# Sample GSL: GkeCluster should have subnetwork.privateIpGoogleAccess
+# Associated Rule: D9.GCP.NET.19
 # Permissions: compute.subnetworks.setPrivateIpGoogleAccess
 
 from googleapiclient import discovery
@@ -21,14 +21,13 @@ def run_action(project_id, rule, entity, params):
     output_msg = ''
 
     logging.info(f'{__file__} - Setting private google access on subnet: {subnet_name} to on')
-
     try:
         set_google_private_access_on(service, project_id, subnet_name, region)
     except Exception as e:  # on failure
-        msg = f'Failed to set private google access on: {e}'
+        msg = f': Failed to set private google access on for subnet \'{subnet_name}\' - {e}'
         logging.error(f'{__file__} - {msg}')
         raise Exception(msg)
-    msg = f'Successfully set private google access on'
+    msg = f'Successfully set private google access on for subnet \'{subnet_name}\''
     logging.info(f'{__file__} - {msg}')
     output_msg += msg
 
@@ -41,13 +40,14 @@ def set_google_private_access_on(service, project_id, subnet_name, region):
     }
     request = service.subnetworks().setPrivateIpGoogleAccess(project=project_id, region=region, subnetwork=subnet_name,
                                                              body=subnetworks_set_private_ip_google_access_request_body)
-    request.execute()
+    response = request.execute()
+    return response
 
 
 def get_properties_from_entity(entity):
     try:
-        subnet_name = entity['name']
-        region = entity['region']
+        subnet_name = entity['subnetwork']['name']
+        region = entity['subnetwork']['region']
     except KeyError as e:
         raise KeyError(f"Missing property from entity: {e}")
     return subnet_name, region

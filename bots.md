@@ -101,6 +101,22 @@ Limitations: None
 
 Permissions: compute.instances.get, compute.instances.setLabels
 
+## vm_instance_disable_public_ip
+
+What it does: Disables public IP for all the network interfaces of a VM Instance
+
+Usage: vm_instance_disable_public_ip
+
+Example: vm_instance_disable_public_ip
+
+Limitations: None
+
+Example GSL: VMInstance should not have isPublic=true
+
+Associated Rule: D9.GCP.NET.04
+
+Permissions: compute.instances.get, compute.instances.deleteAccessConfig
+
 ## vm_instance_stop
 
 What it does: stops the  VM in the finding

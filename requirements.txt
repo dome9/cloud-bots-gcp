@@ -6,6 +6,7 @@ google-api-python-client==2.20.0
 google-auth==2.0.2
 google-auth-httplib2==0.1.0
 google-auth-oauthlib==0.4.6
+google-cloud-storage==2.2.1
 googleapis-common-protos==1.53.0
 httplib2==0.19.1
 idna==3.2

@@ -73,6 +73,22 @@ Associated Rule: D9.GCP.NET.19
 
 Permissions: compute.subnetworks.setPrivateIpGoogleAccess
 
+## storage_bucket_remove_allow_public_access_rules
+
+What it does: Deletes IAM rules of a Storage Bucket that allow public access
+
+Usage: storage_bucket_remove_allow_public_access_rules.py
+
+Example: storage_bucket_remove_allow_public_access_rules.py
+
+Limitations: None
+
+Example GSL: StorageBucket should not have iamPolicy with [ bindings contain [ members contain-any [ $ in ( 'allUsers', 'allAuthenticatedUsers' ) ] ] ]
+
+Associated Rule: D9.GCP.IAM.09
+
+Permissions: storage.buckets.getIamPolicy, storage.buckets.setIamPolicy
+
 ## subnet_set_private_google_access_on
 
 What it does: Enables subnet 'private google access'

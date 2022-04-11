@@ -10,6 +10,8 @@
     "compute.subnetworks.setPrivateIpGoogleAccess",
     "compute.subnetworks.update",
     "container.clusters.update",
-    "gkemulticloud.awsNodePools.update"
+    "gkemulticloud.awsNodePools.update",
+    "storage.buckets.getIamPolicy",
+    "storage.buckets.setIamPolicy"
   ]
 }

@@ -77,9 +77,9 @@ Permissions: compute.subnetworks.setPrivateIpGoogleAccess
 
 What it does: Deletes IAM rules of a Storage Bucket that allow public access
 
-Usage: storage_bucket_remove_allow_public_access_rules.py
+Usage: storage_bucket_remove_allow_public_access_rules
 
-Example: storage_bucket_remove_allow_public_access_rules.py
+Example: storage_bucket_remove_allow_public_access_rules
 
 Limitations: None
 

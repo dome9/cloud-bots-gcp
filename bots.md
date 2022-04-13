@@ -1,5 +1,23 @@
 # Bots
 
+## cloud_sql_delete_public_ip_ranges
+
+What it does: Deletes public IP ranges (0.0.0.0/0) from Cloud SQL authorized networks
+
+Usage: cloud_sql_delete_public_ip_ranges
+
+Example: cloud_sql_delete_public_ip_ranges
+
+Limitations: None
+
+Example GSL: CloudSql where ipAddresses contain [ ipAddress isPublic() ] and
+             settings.ipConfiguration.ipv4Enabled=true should not have
+             settings.ipConfiguration.authorizedNetworks contain [value like '0.0.0.0/0']
+
+Associated Rule: D9.GCP.NET.23
+
+Permissions: cloudsql.instances.get, cloudsql.instances.update
+
 ## firewall_rules_delete
 
 What it does: deletes the GCP firewall rule(s)in the finding

@@ -1,5 +1,7 @@
 {
   "permissions": [
+    "cloudsql.instances.get",
+    "cloudsql.instances.update",
     "compute.firewalls.delete",
     "compute.instances.get",
     "compute.instances.setLabels",

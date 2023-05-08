@@ -6,7 +6,6 @@ from send_logs_api_gateway import *
 
 def main(req):
     print('GCP cloud bot function processed a request.')
-
     source_message = req
 
     start_time = time.time()
@@ -37,7 +36,7 @@ def main(req):
             print(f'''{__file__} - Output was not sent : {output_message}''')
         is_send_logs = os.getenv('SEND_LOGS', False)
         print(f'{__file__} - SEND_LOGS set to {str(is_send_logs)}')
-        send_logs_api_gateway(output_message);
+        send_logs_api_gateway(output_message)
         if is_send_logs:
             send_logs(output_message, start_time, source_message.get('account').get('vendor'))
     if output_message:

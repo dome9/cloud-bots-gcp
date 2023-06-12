@@ -1,3 +1,4 @@
+import time
 from handle_event import *
 from send_events_and_errors import *
 from send_logs import *
@@ -22,7 +23,7 @@ def main(req):
         output_message['logsHttpEndpointStreamPartitionKey'] = source_message.get('logsHttpEndpointStreamPartitionKey')
         output_message['dome9AccountId'] = source_message.get('dome9AccountId')
         output_message['executionId'] = source_message.get('executionId')
-        output_message['vendor'] = source_message.get('account').get('vendor')
+        output_message['vendor'] = source_message['account'].get('vendor')
         try:
             export_results = handle_event(source_message, output_message)
         except Exception as e:

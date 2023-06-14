@@ -22,7 +22,7 @@ def run_action(project_id, rule, entity, params):
         if bots_utils.UtilsConstants.ERROR in response:  # on failure
             msg = f'Failed deleting firewall rule: {firewall} - {response[bots_utils.UtilsConstants.ERROR]}'
             logging.error(f'{__file__} - {msg}')
-            output_msg += msg
+            raise Exception(msg)
         else:  # on success
             msg = f'firewall rule: {firewall} was successfully deleted'
             logging.info(f'{__file__} - {msg}')
@@ -30,7 +30,7 @@ def run_action(project_id, rule, entity, params):
     except Exception as e:
         msg = f'Unexpected error occurred - {e}'
         logging.error(f'{__file__} - {msg}')
-        output_msg += msg
+        raise e
 
     return output_msg
 

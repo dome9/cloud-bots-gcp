@@ -19,7 +19,7 @@ def run_action(project_id, rule, entity, params):
     except ValueError:
         error_msg = 'One or more params are missing'
         logging.error(f'{__file__} - {error_msg}')
-        return error_msg
+        raise Exception(error_msg)
 
     # get instance labels and label fingerprint
     try:
@@ -31,7 +31,7 @@ def run_action(project_id, rule, entity, params):
             error_msg = f'failed to get instance labels and label fingerprint - ' \
                         f'{response[bots_utils.UtilsConstants.ERROR]}'
             logging.error(f'{__file__} - {error_msg}')
-            return error_msg
+            raise Exception(error_msg)
 
         # on success
         labels = response.get('labels',{})
@@ -42,7 +42,7 @@ def run_action(project_id, rule, entity, params):
     except Exception as e:
         error_msg = f'Unexpected error - {e}'
         logging.error(f'{__file__} - {error_msg}')
-        return error_msg
+        raise e
 
     output_msg = ''
 

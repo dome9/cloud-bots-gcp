@@ -37,7 +37,7 @@ def run_action(project_id: str, rule: str, entity: Dict, params: List) -> str:
                 if bots_utils.UtilsConstants.ERROR in response:  # on failure
                     error_msg = f'failed to update imageType of node pool: {node_pool_id}'
                     logging.error(f'{__file__} - {error_msg}')
-                    output_msg += error_msg
+                    raise Exception(msg)
                 else: # on success
                     msg = f'successfully updated imageType of node pool: {node_pool_id}'
                     logging.info(f'{__file__} - {msg}')
@@ -45,6 +45,6 @@ def run_action(project_id: str, rule: str, entity: Dict, params: List) -> str:
             except Exception as e:
                 msg = f'Unexpected error occurred while working on node pool: {node_pool_id} - {e}'
                 logging.error(f'{__file__} - {msg}')
-                output_msg += f'\n{msg}'
+                raise e
 
     return output_msg

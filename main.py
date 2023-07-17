@@ -1,10 +1,9 @@
 import time
+import logging
 from handle_event import *
 from send_events_and_errors import *
 from send_logs import *
 from send_logs_api_gateway import *
-from authenticate import authenticate
-import logging
 
 logging.basicConfig(level=logging.INFO)  # Set logging level to INFO
 
@@ -47,10 +46,5 @@ def main(req):
             send_logs(output_message, start_time, source_message.get('account').get('vendor'))
     if output_message:
         return f'{output_message}'
-
     else:
         return f'GCP cloud bot had an error - {output_message}'
-
-
-# Apply the authentication decorator to the main function
-main = authenticate(main)

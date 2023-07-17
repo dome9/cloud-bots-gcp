@@ -5,7 +5,7 @@ from send_events_and_errors import *
 from send_logs import *
 from send_logs_api_gateway import *
 
-logging.basicConfig(level=logging.INFO)  # Set logging level to INFO
+logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger(__name__)
 

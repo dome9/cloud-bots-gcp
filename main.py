@@ -12,7 +12,6 @@ logger = logging.getLogger(__name__)
 def main(req):
     logger.info('GCP cloud bot function processed a request.')
     source_message = req
-
     start_time = time.time()
     logger.info(f'{__file__} - source message : {source_message}')
     output_message = {}

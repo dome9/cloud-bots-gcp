@@ -1,0 +1,39 @@
+name: gcp update zip on commit
+on:
+  push:
+    branches: [ "master"]
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: upload to Amazon s3
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Get AWS permissions
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{secrets.ASSUMEROLE}}
+          aws-region: us-east-1
+      - name: Copy and zip files to s3
+        run: |
+          pwd=`pwd`
+          uploadFolder="upload"
+          mkdir $uploadFolder
+          mkdir $uploadFolder/.python_packages
+          mkdir $uploadFolder/.python_packages/lib
+          mkdir $uploadFolder/.python_packages/lib/site-packages
+          cp host.json $uploadFolder
+          cp requirements.txt $uploadFolder
+          cp -rf dome9CloudBots $uploadFolder
+          pip install -r requirements.txt --target=$uploadFolder/.python_packages/lib/site-packages
+          cd $uploadFolder
+          zip -r9 $pwd/cloud-bots-gcp.zip .
+          cd $pwd
+          aws s3 mkdir s3://dome9-backend-artifacts/gcpcloudbots/
+          aws s3 cp $pwd/cloud-bots-gcp.zip "s3://dome9-backend-artifacts/gcpcloudbots/cloud-bots-gcp.zip" --acl public-read

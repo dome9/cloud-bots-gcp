@@ -20,7 +20,7 @@ jobs:
         with:
           role-to-assume: ${{secrets.ASSUMEROLE}}
           aws-region: us-east-1
-      - name: Copy and zip files to s3
+      - name: Copy and zip repo files to s3
         run: |
           pwd=`pwd`
           uploadFolder="upload"

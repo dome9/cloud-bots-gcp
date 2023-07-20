@@ -38,8 +38,8 @@ jobs:
           echo "Created $uploadFolder/.python_packages/lib directory."
           mkdir $uploadFolder/.python_packages/lib/site-packages
           echo "Created $uploadFolder/.python_packages/lib/site-packages directory."
-          cp -rf cloud-bots-gcp $uploadFolder
-          echo "Copied dome9CloudBots folder to $uploadFolder."
+          cp -rf . $uploadFolder
+          echo "Copied code folder to $uploadFolder."
           pip install -r requirements.txt --target=$uploadFolder/.python_packages/lib/site-packages
           echo "Installed Python packages to $uploadFolder/.python_packages/lib/site-packages."
           cd $uploadFolder

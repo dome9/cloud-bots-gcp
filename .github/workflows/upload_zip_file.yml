@@ -36,7 +36,18 @@ jobs:
           echo "Created $uploadFolder/.python_packages/lib directory."
           mkdir $uploadFolder/.python_packages/lib/site-packages
           echo "Created $uploadFolder/.python_packages/lib/site-packages directory."
-          cp -rf . $uploadFolder
+          cp handle_event.py $uploadFolder
+          echo "Copied handle_event.py to $uploadFolder."
+          cp send_events_and_errors.py $uploadFolder
+          echo "Copied send_events_and_errors.py to $uploadFolder."
+          cp send_logs.py $uploadFolder
+          echo "Copied send_logs.py to $uploadFolder."
+          cp send_logs_api_gateway.py $uploadFolder
+          echo "Copied send_logs_api_gateway.py to $uploadFolder."
+          cp requirements.txt $uploadFolder
+          echo "Copied requirements.txt to $uploadFolder."
+          cp -rf bots $uploadFolder
+          echo "Copied dome9CloudBots folder to $uploadFolder."
           pip install -r requirements.txt --target=$uploadFolder/.python_packages/lib/site-packages
           echo "Installed Python packages to $uploadFolder/.python_packages/lib/site-packages."
           cd $uploadFolder

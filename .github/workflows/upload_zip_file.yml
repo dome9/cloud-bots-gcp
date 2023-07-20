@@ -23,6 +23,8 @@ jobs:
           role-to-assume: ${{secrets.ASSUMEROLE}}
           aws-region: us-east-1
       - name: Copy and zip repo files to s3
+        env:
+          ACTIONS_STEP_DEBUG: true
         run: |
           set -x  # Enable debug mode
           pwd=`pwd`
@@ -37,6 +39,7 @@ jobs:
           mkdir $uploadFolder/.python_packages/lib/site-packages
           echo "Created $uploadFolder/.python_packages/lib/site-packages directory."
           cp -rf . $uploadFolder
+          echo "Copied code folder to $uploadFolder."
           pip install -r requirements.txt --target=$uploadFolder/.python_packages/lib/site-packages
           echo "Installed Python packages to $uploadFolder/.python_packages/lib/site-packages."
           cd $uploadFolder

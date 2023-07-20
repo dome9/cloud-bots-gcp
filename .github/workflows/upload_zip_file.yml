@@ -9,6 +9,8 @@ jobs:
   deploy:
     name: upload to Amazon s3
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: true
     permissions:
       id-token: write
       contents: read
@@ -21,8 +23,6 @@ jobs:
           role-to-assume: ${{secrets.ASSUMEROLE}}
           aws-region: us-east-1
       - name: Copy and zip repo files to s3
-        env:
-          ACTIONS_STEP_DEBUG: true
         run: |
           set -x  # Enable debug mode
           pwd=`pwd`

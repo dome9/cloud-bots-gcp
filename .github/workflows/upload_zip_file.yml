@@ -18,7 +18,7 @@ jobs:
       - name: Get AWS permissions
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: ${{secrets.ASSUMEROLE}}
+          role-to-assume: arn:aws:iam::317307795746:role/cloud-bot-gcp-upload-zip-role
           aws-region: us-east-1
       - name: Copy and zip repo files to s3
         run: |
@@ -36,4 +36,5 @@ jobs:
           zip -r9 $pwd/cloud-bots-gcp.zip .
           cd $pwd
           aws s3 mkdir s3://dome9-backend-artifacts/gcpcloudbots/
-          aws s3 cp $pwd/cloud-bots-gcp.zip "s3://dome9-backend-artifacts/gcpcloudbots/cloud-bots-gcp.zip" --acl public-read
+          aws s3 cp 
+          /cloud-bots-gcp.zip "s3://dome9-backend-artifacts/gcpcloudbots/cloud-bots-gcp.zip" --acl public-read

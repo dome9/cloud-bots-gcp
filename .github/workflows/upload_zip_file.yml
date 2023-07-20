@@ -36,5 +36,5 @@ jobs:
           zip -r9 $pwd/cloud-bots-gcp.zip .
           cd $pwd
           aws s3 mkdir s3://dome9-backend-artifacts/gcpcloudbots/
-          aws s3 cp 
-          /cloud-bots-gcp.zip "s3://dome9-backend-artifacts/gcpcloudbots/cloud-bots-gcp.zip" --acl public-read
+          aws s3 cp $pwd/cloud-bots-gcp.zip "s3://dome9-backend-artifacts/gcpcloudbots/cloud-bots-gcp.zip" --acl public-read
+

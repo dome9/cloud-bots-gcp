@@ -46,6 +46,8 @@ jobs:
           echo "Copied send_logs_api_gateway.py to $uploadFolder."
           cp requirements.txt $uploadFolder
           echo "Copied requirements.txt to $uploadFolder."
+          cp main.py $uploadFolder
+          echo "Copied main.py to $uploadFolder."
           cp -rf bots $uploadFolder
           echo "Copied bots folder to $uploadFolder."
           pip install -r requirements.txt --target=$uploadFolder/.python_packages/lib/site-packages

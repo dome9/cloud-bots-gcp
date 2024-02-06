@@ -27,3 +27,4 @@ uritemplate
 urllib3
 flask_jwt_extended
 redis
+flask==2.3.3

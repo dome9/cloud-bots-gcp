@@ -16,7 +16,7 @@ def run_action(project_id, rule, entity, params):
     logging.info(f'{__file__} - run_action started')
     credentials = GoogleCredentials.get_application_default()
     service = discovery.build('compute', 'v1', credentials=credentials)
-    region = entity.get('region')
+    region = entity.get('region').replace('_','-')
     fingerprint = entity.get('fingerPrint')
     subnetwork = entity.get('name')
 
